@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Siripathi Saw Mills – Premium Timber Since 1970s</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300&family=Oswald:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #D4A017;
+    --gold-light: #F0C040;
+    --crimson: #8B1A1A;
+    --teal: #1A5C5C;
+    --bark: #3B2410;
+    --cream: #F5EDD8;
+    --warm-white: #FDF8F0;
+    --smoke: #2A1E14;
+    --sawdust: #C8A96E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Crimson Pro', Georgia, serif;
+    background: var(--smoke);
+    color: var(--cream);
+    overflow-x: hidden;
+  }
+
+  /* ── GRAIN OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.35;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 3rem;
+    background: rgba(42,30,20,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(212,160,23,0.25);
+    transition: all 0.3s;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .nav-logo img {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+  }
+
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.03em;
+    line-height: 1.1;
+  }
+
+  .nav-brand span {
+    display: block;
+    font-size: 0.65rem;
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 0.18em;
+    color: var(--sawdust);
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--cream);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--bark) !important;
+    padding: 0.5rem 1.25rem;
+    font-weight: 600 !important;
+    border-radius: 2px;
+  }
+
+  .nav-cta:hover { background: var(--gold-light); color: var(--bark) !important; }
+  .nav-cta::after { display: none !important; }
+
+  /* ── HERO (FULL BACKGROUND IMAGE) ── */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.45) saturate(0.75);
+  }
+
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(42, 30, 20, 0.92) 0%,
+      rgba(42, 30, 20, 0.75) 40%,
+      rgba(42, 30, 20, 0.35) 70%,
+      rgba(42, 30, 20, 0.15) 100%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 680px;
+    padding: 8rem 5rem 6rem;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 40px; height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 5.5vw, 6rem);
+    font-weight: 900;
+    line-height: 0.95;
+    margin-bottom: 1.5rem;
+    color: var(--warm-white);
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: rgba(245, 237, 216, 0.85);
+    max-width: 480px;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--bark);
+    padding: 0.9rem 2rem;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 2px;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(212,160,23,0.4);
+  }
+
+  .btn-outline {
+    border: 1px solid rgba(212,160,23,0.5);
+    color: var(--cream);
+    padding: 0.9rem 2rem;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 400;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(212,160,23,0.08);
+  }
+
+  .hero-badge {
+    position: absolute;
+    bottom: 3rem;
+    right: 3rem;
+    width: 110px;
+    height: 110px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: rgba(42,30,20,0.85);
+    backdrop-filter: blur(8px);
+    animation: spin-slow 20s linear infinite;
+    z-index: 3;
+  }
+
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .hero-badge-inner {
+    animation: spin-slow 20s linear infinite reverse;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-badge-inner span:first-child {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .hero-badge-inner span:last-child {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sawdust);
+  }
+
+  /* ── STATS STRIP ── */
+  .stats-strip {
+    background: var(--gold);
+    display: flex;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .stat-item {
+    padding: 1.5rem 3.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-right: 1px solid rgba(59,36,16,0.2);
+    flex: 1;
+    justify-content: center;
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--bark);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(59,36,16,0.75);
+    line-height: 1.3;
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 6rem 5rem; }
+
+  .section-eyebrow {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .divider {
+    width: 60px; height: 2px;
+    background: var(--gold);
+    margin-bottom: 2rem;
+  }
+
+  /* ── ABOUT ── */
+  .about {
+    background: var(--bark);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .about-img-wrap {
+    position: relative;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .about-img-wrap img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.85) saturate(0.9);
+  }
+
+  .about-img-wrap::before {
+    content: '';
+    position: absolute;
+    top: -12px; left: -12px;
+    right: 12px; bottom: 12px;
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .about-text p {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: var(--sawdust);
+    margin-bottom: 1.25rem;
+  }
+
+  .about-text p strong { color: var(--cream); font-weight: 600; }
+
+  /* ── SERVICES ── */
+  .services {
+    background: var(--smoke);
+  }
+
+  .services-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 4rem;
+  }
+
+  .services-header .divider { margin: 0 auto 2rem; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5px;
+    background: rgba(212,160,23,0.15);
+    border: 1px solid rgba(212,160,23,0.15);
+  }
+
+  .service-card {
+    background: var(--smoke);
+    padding: 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s;
+    cursor: default;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.4s;
+    transform-origin: left;
+  }
+
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-card:hover {
+    background: #1e1408;
+  }
+
+  .service-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.25rem;
+    display: block;
+  }
+
+  .service-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--cream);
+  }
+
+  .service-card p {
+    font-size: 0.95rem;
+    color: var(--sawdust);
+    line-height: 1.7;
+  }
+
+  /* ── PRODUCTS / GALLERY ── */
+  .products {
+    background: #1a0e07;
+  }
+
+  .products-header {
+    margin-bottom: 3.5rem;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 1.5px;
+    align-items: stretch;
+  }
+
+  .prod-card {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .prod-card img {
+    width: 100%;
+    flex: 1;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.7) saturate(0.85);
+    transition: all 0.6s ease;
+    aspect-ratio: 4 / 3;
+  }
+
+  .prod-card:first-child {
+    grid-row: span 2;
+  }
+
+  .prod-card:first-child img {
+    aspect-ratio: unset;
+    height: 100%;
+    min-height: 460px;
+  }
+
+  .prod-card:hover img {
+    filter: brightness(0.85) saturate(1);
+    transform: scale(1.04);
+  }
+
+  .prod-card-label {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+  }
+
+  .prod-card-label h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 0.25rem;
+  }
+
+  .prod-card-label p {
+    font-size: 0.85rem;
+    color: var(--sawdust);
+  }
+
+  /* ── WHY US ── */
+  .why-us {
+    background: var(--teal);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .why-us::before {
+    content: '';
+    position: absolute;
+    right: -8rem; top: -8rem;
+    width: 500px; height: 500px;
+    border: 1px solid rgba(212,160,23,0.15);
+    border-radius: 50%;
+  }
+
+  .why-us::after {
+    content: '';
+    position: absolute;
+    right: -4rem; top: -4rem;
+    width: 350px; height: 350px;
+    border: 1px solid rgba(212,160,23,0.1);
+    border-radius: 50%;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .why-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .why-list li {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+
+  .why-list li .bullet {
+    width: 36px; height: 36px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+    background: rgba(212,160,23,0.12);
+  }
+
+  .why-list li h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 0.35rem;
+    color: var(--cream);
+  }
+
+  .why-list li p {
+    font-size: 0.95rem;
+    color: rgba(245,237,216,0.7);
+    line-height: 1.65;
+  }
+
+  .why-img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    border-radius: 2px;
+    filter: brightness(0.75) saturate(0.85);
+    box-shadow: -20px 20px 60px rgba(0,0,0,0.5);
+  }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: var(--bark);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .contact-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .contact-info h2 em { font-style: italic; color: var(--gold); }
+
+  .contact-info p {
+    font-size: 1rem;
+    color: var(--sawdust);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .contact-detail {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .contact-detail .icon {
+    width: 42px; height: 42px;
+    border: 1px solid rgba(212,160,23,0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .contact-detail a, .contact-detail span {
+    font-size: 1rem;
+    color: var(--cream);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .contact-detail a:hover { color: var(--gold); }
+
+  /* ── FORM ── */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-group label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--sawdust);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(212,160,23,0.25);
+    border-radius: 2px;
+    padding: 0.75rem 1rem;
+    color: var(--cream);
+    font-family: 'Crimson Pro', serif;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+    outline: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--gold);
+  }
+
+  .form-group select option { background: var(--bark); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+
+  .form-submit {
+    background: var(--gold);
+    color: var(--bark);
+    border: none;
+    padding: 1rem 2.5rem;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.3s;
+    align-self: flex-start;
+  }
+
+  .form-submit:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(212,160,23,0.35);
+  }
+
+  /* ── SERVICE REQUEST FORM ── */
+  .service-request-form {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(212,160,23,0.2);
+    border-radius: 4px;
+    padding: 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .service-request-form .form-desc {
+    font-size: 1.1rem;
+    color: var(--sawdust);
+    line-height: 1.8;
+    margin-bottom: 0.5rem;
+  }
+
+  .service-request-form .form-highlights {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .service-request-form .form-highlights li {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .service-request-form .form-note {
+    font-size: 0.8rem;
+    color: rgba(200,169,110,0.45);
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 0.05em;
+  }
+
+  .service-request-form .form-status {
+    padding: 0.75rem 1rem;
+    border-radius: 2px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    display: none;
+  }
+
+  .service-request-form .form-status.success {
+    display: block;
+    background: rgba(37, 211, 102, 0.1);
+    border: 1px solid rgba(37, 211, 102, 0.3);
+    color: #25D366;
+  }
+
+  .service-request-form .form-status.error {
+    display: block;
+    background: rgba(139, 26, 26, 0.15);
+    border: 1px solid rgba(139, 26, 26, 0.4);
+    color: #e57373;
+  }
+
+  /* ── WHATSAPP ── */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 2rem; right: 2rem;
+    z-index: 200;
+    width: 58px; height: 58px;
+    border-radius: 50%;
+    background: #25D366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 30px rgba(37,211,102,0.65);
+  }
+
+  .whatsapp-float svg { width: 30px; height: 30px; fill: white; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #150c05;
+    padding: 3rem 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(212,160,23,0.15);
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .footer-logo img { width: 44px; }
+
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .footer-brand span {
+    display: block;
+    font-size: 0.6rem;
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 0.15em;
+    color: var(--sawdust);
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+
+  footer p {
+    font-size: 0.85rem;
+    color: rgba(200,169,110,0.5);
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .hero-content { padding: 7rem 2.5rem 4rem; max-width: 100%; }
+    .about, .contact { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .products-grid { grid-template-columns: 1fr 1fr; }
+    .prod-card:first-child img { min-height: 280px; height: auto; }
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 2rem; }
+    footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+    .stats-strip { flex-wrap: wrap; }
+    .stat-item { flex: 1 1 50%; border-right: none; border-bottom: 1px solid rgba(59,36,16,0.2); }
+    .hero-badge { width: 90px; height: 90px; bottom: 1.5rem; right: 1.5rem; }
+    .hero-badge-inner span:first-child { font-size: 1.5rem; }
+  }
+
+  @media (max-width: 600px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .products-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-title { font-size: 2.5rem; }
+    .hero-content { padding: 6rem 1.5rem 3rem; }
+    .hero-badge { display: none; }
+  }
+</style>
+</head>
+<body>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="Siripathi-logo.png" alt="Siripathi Logo">
+    <div class="nav-brand">
+      Siripathi Saw Mills
+      <span>Est. 1970s · Sri Lanka</span>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#why-us">Why Us</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <img src="Image1.jpg" alt="Sawmill background">
+  </div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Trusted Since the Early 1970s</p>
+    <h1 class="hero-title">Premium<br>Timber,<br><em>Crafted</em><br>with Pride.</h1>
+    <p class="hero-subtitle">Sri Lanka's trusted sawmill for wood cutting services, quality timber, firewood, and sawdust — at the best prices with uncompromising quality.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Book a Date</a>
+      <a href="#services" class="btn-outline">Our Services</a>
+    </div>
+  </div>
+
+  <div class="hero-badge">
+    <div class="hero-badge-inner">
+      <span>50+</span>
+      <span>Years of Excellence</span>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stat-item">
+    <div>
+      <div class="stat-number">50+</div>
+      <div class="stat-label">Years in<br>Business</div>
+    </div>
+  </div>
+  <div class="stat-item">
+    <div>
+      <div class="stat-number">4</div>
+      <div class="stat-label">Core<br>Services</div>
+    </div>
+  </div>
+  <div class="stat-item">
+    <div>
+      <div class="stat-number">✦</div>
+      <div class="stat-label">Best<br>Prices</div>
+    </div>
+  </div>
+  <div class="stat-item">
+    <div>
+      <div class="stat-number">✦</div>
+      <div class="stat-label">Premium<br>Quality</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about fade-up" id="about">
+  <div class="about-img-wrap">
+    <img src="Image2.jpg" alt="Image2">
+  </div>
+  <div class="about-text">
+    <p class="section-eyebrow">Our Story</p>
+    <h2 class="section-title">Built on <em>Decades</em> of Craft</h2>
+    <div class="divider"></div>
+    <p>Since the early <strong>1970s</strong>, Siripathi Saw Mills has been a cornerstone of Sri Lanka's timber industry. What began as a humble operation has grown into a trusted name across the island — built on honest work, fair pricing, and a genuine passion for quality wood.</p>
+    <p>Our seasoned taskforce brings decades of combined expertise to every log, every cut, and every order. Whether you need precision wood cutting services or bulk supplies of timber, firewood, or sawdust, we treat every customer like a long-standing partner.</p>
+    <p>We believe <strong>quality shouldn't cost more</strong> — and after more than half a century in business, we know how to deliver both.</p>
+    <a href="tel:0763045120" class="btn-primary" style="margin-top:1rem;">📞 Call Us: 076 304 5120</a>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services fade-up" id="services">
+  <div class="services-header">
+    <p class="section-eyebrow">What We Offer</p>
+    <h2 class="section-title">Our <em>Services</em></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon">🪚</span>
+      <h3>Wood Cutting Services</h3>
+      <p>Precision sawing and cutting tailored to your specifications. Book a date and our skilled team handles the rest with efficiency and care.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🪵</span>
+      <h3>Timber Sales</h3>
+      <p>High-quality wood for construction, furniture, and more. We supply a variety of timber grades at the most competitive prices in Sri Lanka.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🔥</span>
+      <h3>Firewood</h3>
+      <p>Dry, seasoned firewood perfect for home use, restaurants, and industrial applications. Available in bulk or smaller quantities.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🌾</span>
+      <h3>Sawdust</h3>
+      <p>Premium sawdust for animal bedding, composting, fuel, and industrial use. Fresh, clean, and available in large quantities.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS GALLERY -->
+<section class="products fade-up" id="products">
+  <div class="products-header">
+    <p class="section-eyebrow">Our Products</p>
+    <h2 class="section-title">From the <em>Mill</em> to You</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="products-grid">
+    <div class="prod-card">
+      <img src="Image5.jpg" alt="Image5">
+      <div class="prod-card-label">
+        <h3>Premium Timber</h3>
+        <p>Structural & finishing grades available</p>
+      </div>
+    </div>
+    <div class="prod-card">
+      <img src="Image3.jpg" alt="Image3">
+      <div class="prod-card-label">
+        <h3>Cutting Services</h3>
+        <p>On-site precision cuts</p>
+      </div>
+    </div>
+    <div class="prod-card">
+      <img src="Image7.jpg" alt="Image7">
+      <div class="prod-card-label">
+        <h3>Firewood</h3>
+        <p>Seasoned & ready to burn</p>
+      </div>
+    </div>
+    <div class="prod-card">
+      <img src="Image6.jpg" alt="Image6">
+      <div class="prod-card-label">
+        <h3>The Mill</h3>
+        <p>Modern equipment, traditional craft</p>
+      </div>
+    </div>
+    <div class="prod-card">
+      <img src="Image9.png" alt="Image9">
+      <div class="prod-card-label">
+        <h3>Sawdust</h3>
+        <p>Bulk supply for all purposes</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-us fade-up" id="why-us">
+  <div class="why-grid">
+    <div>
+      <p class="section-eyebrow">Why Choose Us</p>
+      <h2 class="section-title">Excellence in <em>Every</em> Grain</h2>
+      <div class="divider"></div>
+      <ul class="why-list">
+        <li>
+          <div class="bullet">💰</div>
+          <div>
+            <h4>Best Prices Guaranteed</h4>
+            <p>We believe quality timber should be accessible. Our competitive pricing ensures you always get premium value for your money.</p>
+          </div>
+        </li>
+        <li>
+          <div class="bullet">🏆</div>
+          <div>
+            <h4>Premium Quality Wood</h4>
+            <p>Every piece of timber is carefully selected and processed to meet the highest standards — no compromises, no shortcuts.</p>
+          </div>
+        </li>
+        <li>
+          <div class="bullet">👷</div>
+          <div>
+            <h4>Expert Taskforce</h4>
+            <p>Our experienced team has been perfecting the craft for over five decades, ensuring every job is done right the first time.</p>
+          </div>
+        </li>
+        <li>
+          <div class="bullet">📅</div>
+          <div>
+            <h4>Flexible Scheduling</h4>
+            <p>Book your wood cutting date at your convenience. We work around your schedule to minimize disruption to your projects.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <img src="Image8.jpg" alt="Image8">
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact fade-up" id="contact">
+  <div class="contact-info">
+    <p class="section-eyebrow">Get In Touch</p>
+    <h2 class="contact-info h2" style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;line-height:1.1;margin-bottom:1rem;">Ready to <em style="font-style:italic;color:var(--gold)">Order</em> or<br>Book a Date?</h2>
+    <div class="divider"></div>
+    <p>Whether you need timber, firewood, sawdust, or a date booked for our wood cutting services — reach out and our team will get back to you promptly.</p>
+    <div class="contact-detail">
+      <div class="icon">📞</div>
+      <a href="tel:0763045120">076 304 5120</a>
+    </div>
+    <div class="contact-detail">
+      <div class="icon">📧</div>
+      <a href="mailto:siripathienterprises247@gmail.com">siripathienterprises247@gmail.com</a>
+    </div>
+    <div class="contact-detail">
+      <div class="icon">📍</div>
+      <span>Siripathi Saw Mills, Old Road, Piliyandala, Sri Lanka</span>
+    </div>
+    <div class="contact-detail">
+      <div class="icon">💬</div>
+      <a href="https://wa.me/94763045120" target="_blank">WhatsApp Us</a>
+    </div>
+  </div>
+
+  <!-- SERVICE REQUEST FORM -->
+  <div class="service-request-form">
+    <p class="form-desc">Fill in our quick enquiry form and we'll get back to you as soon as possible. It only takes a minute!</p>
+    <ul class="form-highlights">
+      <li>✦ Book a wood cutting date</li>
+      <li>✦ Request timber, firewood or sawdust</li>
+      <li>✦ Ask us anything</li>
+    </ul>
+
+    <div id="formStatus" class="form-status"></div>
+
+    <form id="serviceForm" action="https://formspree.io/f/xanqkyqo" method="POST">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Full Name *</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number *</label>
+          <input type="tel" id="phone" name="phone" placeholder="07X XXX XXXX" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="service">Service Required *</label>
+        <select id="service" name="service" required>
+          <option value="" disabled selected>Select a service...</option>
+          <option value="Wood Cutting">Wood Cutting</option>
+          <option value="Buy Firewood">Buy Firewood</option>
+          <option value="Buy Sawdust">Buy Sawdust</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="notes">Notes (Optional)</label>
+        <textarea id="notes" name="notes" placeholder="Tell us more about your requirements..."></textarea>
+      </div>
+
+      <!-- Hidden field to set reply-to email -->
+      <input type="hidden" name="_replyto" value="siripathienterprises247@gmail.com">
+
+      <button type="submit" class="btn-primary form-submit" id="submitBtn">Send Request →</button>
+    </form>
+
+    <p class="form-note">Responses go directly to our inbox</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <img src="Siripathi-logo.png" alt="Siripathi logo">
+    <div class="footer-brand">
+      Siripathi Saw Mills
+      <span>Est. 1970s · Sri Lanka</span>
+    </div>
+  </div>
+  <p>© 2025 Siripathi Saw Mills. All rights reserved.</p>
+</footer>
+
+<!-- WHATSAPP BUTTON -->
+<a href="https://wa.me/94763045120" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16.004 0C7.164 0 0 7.163 0 16c0 2.825.737 5.477 2.027 7.788L0 32l8.396-2.003A15.937 15.937 0 0016.004 32C24.837 32 32 24.837 32 16S24.837 0 16.004 0zm0 29.24a13.2 13.2 0 01-6.725-1.838l-.482-.285-4.987 1.19 1.237-4.863-.316-.497A13.2 13.2 0 012.76 16c0-7.317 5.927-13.24 13.244-13.24C23.32 2.76 29.24 8.683 29.24 16c0 7.317-5.92 13.24-13.236 13.24zm7.264-9.912c-.398-.2-2.354-1.16-2.72-1.292-.365-.133-.63-.2-.896.2-.265.397-1.03 1.292-1.262 1.557-.232.265-.464.3-.862.1-.398-.2-1.68-.618-3.2-1.975-1.183-1.057-1.982-2.363-2.213-2.76-.232-.398-.025-.613.174-.81.18-.178.398-.464.597-.696.2-.232.265-.398.398-.663.133-.265.066-.497-.033-.696-.1-.2-.896-2.162-1.228-2.96-.324-.775-.653-.67-.896-.682l-.764-.013c-.265 0-.696.1-1.062.497-.364.397-1.393 1.36-1.393 3.32s1.427 3.85 1.626 4.116c.2.265 2.808 4.283 6.802 6.008.95.41 1.692.655 2.27.84.954.303 1.822.26 2.508.158.765-.114 2.354-.962 2.686-1.892.333-.93.333-1.726.232-1.892-.098-.165-.364-.265-.762-.464z"/>
+  </svg>
+</a>
+
+<script>
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Form handling with fetch API (AJAX submission)
+  const form = document.getElementById('serviceForm');
+  const statusDiv = document.getElementById('formStatus');
+  const submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const originalBtnText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+    statusDiv.className = 'form-status';
+    statusDiv.style.display = 'none';
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        statusDiv.textContent = '✓ Your request has been sent successfully! We will contact you soon.';
+        statusDiv.className = 'form-status success';
+        form.reset();
+      } else {
+        const data = await response.json();
+        if (data.errors) {
+          statusDiv.textContent = '✗ ' + data.errors.map(error => error.message).join(', ');
+        } else {
+          statusDiv.textContent = '✗ Oops! Something went wrong. Please try again.';
+        }
+        statusDiv.className = 'form-status error';
+      }
+    } catch (error) {
+      statusDiv.textContent = '✗ Network error. Please check your connection and try again.';
+      statusDiv.className = 'form-status error';
+    } finally {
+      submitBtn.textContent = originalBtnText;
+      submitBtn.disabled = false;
+      statusDiv.style.display = 'block';
+    }
+  });
+</script>
+
+</body>
+</html>
+
